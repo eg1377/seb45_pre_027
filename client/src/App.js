@@ -17,7 +17,6 @@ import { SET_TOKEN } from './redux/tokenSlice';
 import { setIsLogin } from './redux/loginSlice';
 import QuestionEdit from './pages/QuestionEdit';
 
-
 function App() {
   const dispatch = useDispatch();
   const refresh_token = getCookieToken();
@@ -60,7 +59,6 @@ function App() {
   }, []);
   return (
     <>
-
       {/* <Header />
       <SideBar /> */}
 
