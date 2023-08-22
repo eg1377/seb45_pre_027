@@ -309,30 +309,57 @@ const QuestionList = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://4134-183-102-170-103.ngrok-free.app/',
-          {
-            method: 'get',
-            headers: new Headers({
-              'ngrok-skip-browser-warning': '69420',
-            }),
-          },
+    // 백엔드 API 주소를 아래 URL에 설정합니다.
+
+    fetch(`${process.env.REACT_APP_SERVER_URL}board?page=1&size=10`, {
+      method: 'get',
+      headers: new Headers({
+        'ngrok-skip-browser-warning': '69420',
+        'Content-Type': 'application/json',
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data?.data); // API 응답으로 받은 데이터를 상태에 저장
+      })
+      .catch((error) => {
+        console.error(
+          'There was a problem with the fetch operation:',
+          error.message,
         );
+      });
+  }, []); // 빈 의존성 배열을 사용하여 컴포넌트 마운트 시에만 실행
 
-        const d = await response.json();
-        setData(d);
-        console.log(data);
-        setTotalPages(data.pageInfo.totalPages);
-        setQuestions(data.data);
-      } catch (error) {
-        console.error('실패함.', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         'https://4134-183-102-170-103.ngrok-free.app/',
+  //         {
+  //           method: 'get',
+  //           headers: new Headers({
+  //             'ngrok-skip-browser-warning': '69420',
+  //           }),
+  //         },
+  //       );
 
-    fetchData();
-  }, []);
+  //       const d = await response.json();
+  //       setData(d);
+  //       console.log(data);
+  //       setTotalPages(data.pageInfo.totalPages);
+  //       setQuestions(data.data);
+  //     } catch (error) {
+  //       console.error('실패함.', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   // const geturl = 'https://bba2-183-102-170-103.ngrok-free.app/board?page=1&size=10';
 

@@ -146,97 +146,90 @@ const LayoutWithBlogList = () => {
 
   return (
     <div>
-      <div>{id}</div>
-      {isLogIn ? (
-        <>
-          {/* <Header /> */}
+      {/* <Header /> */}
 
-          <Layout>
-            {/* <SideBar /> */}
+      <Layout>
+        {/* <SideBar /> */}
 
-            <Container>
-              <TopContent>
-                <TitleSection>
-                  {/* 타이틀 정보 */}
-                  <TitleStyled>
-                    <div dangerouslySetInnerHTML={{ __html: title }} />
-                  </TitleStyled>
-                  <AskButton />
-                </TitleSection>
-                <Information posts={samplePosts} />
-              </TopContent>
-              <MiddleContent>
-                <DescriptionBox>
-                  <MainContent>
-                    <AdBannerSection>
-                      <BannerImg />
-                    </AdBannerSection>
-                    <ContentSection>
-                      <ButtonGroup />
-                      <ContentDetail>
-                        {/* 질문 정보 */}
+        <Container>
+          <TopContent>
+            <TitleSection>
+              {/* 타이틀 정보 */}
+              <TitleStyled>
+                <div dangerouslySetInnerHTML={{ __html: title }} />
+              </TitleStyled>
+              <AskButton />
+            </TitleSection>
+            <Information posts={samplePosts} />
+          </TopContent>
+          <MiddleContent>
+            <DescriptionBox>
+              <MainContent>
+                <AdBannerSection>
+                  <BannerImg />
+                </AdBannerSection>
+                <ContentSection>
+                  <ButtonGroup />
+                  <ContentDetail>
+                    {/* 질문 정보 */}
 
-                        <QuestionContent>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: data?.board?.content,
-                            }}
-                          />
-                        </QuestionContent>
-                      </ContentDetail>
-                    </ContentSection>{' '}
-                    <S>
-                      <TagSection>
-                        <LinkButton>uikit</LinkButton>
-                        <LinkButton>sun do manager</LinkButton>
-                        <LinkButton>uikit</LinkButton>
-                        <LinkButton>uikit</LinkButton>
-                      </TagSection>
-                      <ButtonList />
-                    </S>
-                    <UserInfoSection>
-                      <UserInfoBox />
-                    </UserInfoSection>
-                    <Comment>
-                      {data ? (
-                        <CommentGetListTest>
-                          {data?.data?.content}
-                        </CommentGetListTest>
-                      ) : (
-                        ''
-                      )}
-                      <CommentBUT />
-                    </Comment>
-                    <RelatedQuestionsSection>
-                      <AddRelatedQuestionItem />
-                    </RelatedQuestionsSection>
-                    <P>
-                      Know someone who can answer? Share a link to this question
-                      via email, Twitter, or Facebook.
-                    </P>
-                    <AnswerCountBox />
-                    {data ? (
-                      <QuestionCommentGetList>
-                        {data?.data?.content}
-                      </QuestionCommentGetList>
-                    ) : (
-                      ''
-                    )}
-                    {/* <P1>Your Answer</P1> */}
-                    <QuestionComment />
-                  </MainContent>
-                  <SideBarBox>
-                    <BlogList title="The Overflow Blog" posts={blogPosts} />
-                    <BlogList title="Featured on Meta" posts={MetaPosts} />
-                  </SideBarBox>
-                </DescriptionBox>
-              </MiddleContent>
-            </Container>
-          </Layout>
-        </>
-      ) : (
-        <div>no log-in</div>
-      )}
+                    <QuestionContent>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: data?.board?.content,
+                        }}
+                      />
+                    </QuestionContent>
+                  </ContentDetail>
+                </ContentSection>{' '}
+                <S>
+                  <TagSection>
+                    <LinkButton>uikit</LinkButton>
+                    <LinkButton>sun do manager</LinkButton>
+                    <LinkButton>uikit</LinkButton>
+                    <LinkButton>uikit</LinkButton>
+                  </TagSection>
+                  <ButtonList />
+                </S>
+                <UserInfoSection>
+                  <UserInfoBox />
+                </UserInfoSection>
+                <Comment>
+                  {data ? (
+                    <CommentGetListTest>
+                      {data?.data?.content}
+                    </CommentGetListTest>
+                  ) : (
+                    ''
+                  )}
+                  <CommentBUT />
+                </Comment>
+                <RelatedQuestionsSection>
+                  <AddRelatedQuestionItem />
+                </RelatedQuestionsSection>
+                <P>
+                  Know someone who can answer? Share a link to this question via
+                  email, Twitter, or Facebook.
+                </P>
+                <AnswerCountBox />
+                {data ? (
+                  <QuestionCommentGetList>
+                    {data?.data?.content}
+                  </QuestionCommentGetList>
+                ) : (
+                  ''
+                )}
+                {/* <P1>Your Answer</P1> */}
+                <QuestionComment />
+              </MainContent>
+              <SideBarBox>
+                <BlogList title="The Overflow Blog" posts={blogPosts} />
+                <BlogList title="Featured on Meta" posts={MetaPosts} />
+              </SideBarBox>
+            </DescriptionBox>
+          </MiddleContent>
+        </Container>
+      </Layout>
     </div>
   );
 };
